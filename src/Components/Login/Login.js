@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useFirebase from "../hooks/useFirebase";
 
 const Login = () => {
+  const { user, loginGoogle } = useFirebase();
   const {
     register,
     handleSubmit,
@@ -33,7 +35,10 @@ const Login = () => {
       </p>
       {/* sign in with google */}
       <div>------------------</div>
-      <button className="btn btn-warning">Login with Google</button>
+      <button onClick={loginGoogle} className="btn btn-warning">
+        Login with Google
+      </button>
+      <h4>{user.displayName}</h4>
     </div>
   );
 };
